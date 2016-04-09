@@ -30,6 +30,24 @@
         });
       }
     }
+    $( "#dropT1" ).click(function(event) {
+      event.stopPropagation();
+      if( $("#drop2").hasClass("open") ){
+        $("#drop2").removeClass("open");
+        $("#dropT2").attr("aria-expanded", "false");
+      }
+      $(this).attr("aria-expanded", "true");
+      $("#drop1").toggleClass("open");
+    });
+    $( "#dropT2" ).click(function(event) {
+      event.stopPropagation();
+      if( $("#drop1").hasClass("open") ){
+        $("#drop1").removeClass("open");
+        $("#dropT1").attr("aria-expanded", "false");
+      }
+      $(this).attr("aria-expanded", "true");
+      $("#drop2").toggleClass("open");
+    });
     doPopovers();
   })
 
@@ -38,9 +56,8 @@
     %button#download-banner-btn.btn-lg.btn.btn-primary{'data-toggle'=>"popover", 'aria-haspopup'=>"true", 'aria-expanded'=>"false"}
       Download Jenkins
     = partial('downloadlist.html.haml')
-    .br
-      .carousel-caption.secondary
-        Get #{site.jenkins.stable} LTS .war or the latest #{site.jenkins.latest} weekly release
+    %p.carousel-caption.secondary
+      Get #{site.jenkins.stable} LTS .war or the latest #{site.jenkins.latest} weekly release
   %ol.carousel-indicators.hidden
     %li.active{'data-target' => '#ji-home-carousel', 'data-slide-to' => 0}
     %li{'data-target' => '#ji-home-carousel', 'data-slide-to' => 1}
@@ -49,12 +66,12 @@
     %li{'data-target' => '#ji-home-carousel', 'data-slide-to' => 4}
   %div.carousel-inner{:role=>"listbox"}
     %div.carousel-item.active
-      %div.carousel-caption.primary
-        %img.jenkins{:src=>"/images/226px-Jenkins_logo.svg.png"}
+      %div.carousel-caption.prim
+        
         %h1#main-page-title.page-title
+ 
           Jenkins
-          %span.in-tag
-            Automation Server
+
         %h5.sub-heading
           Build great things at any scale
         %p
